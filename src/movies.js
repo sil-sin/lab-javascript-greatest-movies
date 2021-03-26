@@ -35,6 +35,8 @@ const ratesAverage = (moviesArr) => {
 // Iteration 4: Drama movies - Get the average of Drama Movies
 
 let dramaMoviesRate = (moviesArr) => {
+  // if( moviesArr.length === 0 || " "){
+  //   return 0};
   let dramaMovies = moviesArr.filter((film) => {
     return film.genre.includes("Drama");
   });
@@ -50,51 +52,50 @@ let dramaMoviesRate = (moviesArr) => {
 };
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-let cloneArray = JSON.parse(JSON.stringify(movies))
+let cloneArray = JSON.parse(JSON.stringify(movies));
 let orderByYear = (moviesArr) => {
-    let sortedArr = moviesArr.sort((elem1,elem2)=>{
-        if(elem1.year>elem2.year) {
-            return 1
-        }
-        else if(elem1.year < elem2.year) {
-            return -1
-        }
-        else {
-            if (elem1.title > elem2.title ) {
-                return 1
-             }
-             else if (elem1.title < elem2.title ) {
-                return -1
-              }
-             else {
-               return 0
-             }
-        }
-    }) 
-    return sortedArr
-}
+  if( moviesArr.length ===0){
+    return 0
+  }
+  let sortedArr = moviesArr.sort((elem1, elem2) => {
+    if (elem1.year > elem2.year) {
+      return 1;
+    } else if (elem1.year < elem2.year) {
+      return -1;
+    } else {
+      if (elem1.title > elem2.title) {
+        return 1;
+      } else if (elem1.title < elem2.title) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  });
+  return sortedArr;
+};
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-let cloneArray1 = JSON.parse(JSON.stringify(movies))
+// let newArr = cloneArray.map(moviesArr,index){
+//   return moviesArr = moviesArr
+// }
+  let newArr = cloneArray.map((items,index)=>{
+    items = items
+  })      
 let orderAlphabetically = (moviesArr) => {
-    let titleSorted = moviesArr.sort((elem1 , elem2) => {
-        if (elem1.title > elem2.title ) {
-            return 1
-         }
-         else if (elem1.title < elem2.title ) {
-            return -1
-          }
-         else {
-           return 0
-         }
-         return titleSorted
-    }) 
-    
-
-
+  let twentyArr = moviesArr.sort((elem1,elem2)=>{
+    if ( elem1.title > elem2.title){
+      return 1
+    }else if(elem1.title < elem2.title){
+      return -1
+    }else{
+      return 0
     }
-    console.log(orderAlphabetically(cloneArray1))
-
+  })
+  return twentyArr.slice(0,20)
+  
+}
+console.log(newArr);
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 
 // BONUS - Iteration 8: Best yearly rate average - Best yearly rate average
